@@ -43,10 +43,22 @@ export function App() {
     }
 
     function changeStatus(taskId: string, isDone: boolean, todolistId: string) {
+        //достаём нужный массив todolistid
+        let tasks = tasksObj[todolistId]
+        //находим нужную таску
+        let task = tasks.find(t => t.id === taskId)
+        //изменим таску, если она нашлась
+        if (task) {
+            task.isDone = isDone
+            setTasksObj({...tasksObj})
+        }
+    }
+
+    function changeTaskTitle(taskId: string, newTitle:string, todolistId: string) {
         let tasks = tasksObj[todolistId]
         let task = tasks.find(t => t.id === taskId)
         if (task) {
-            task.isDone = isDone
+            task.title = newTitle
             setTasksObj({...tasksObj})
         }
     }
@@ -56,6 +68,14 @@ export function App() {
         setTodolists(filteredTodolist)
         delete tasksObj[todolistId]
         setTasksObj({...tasksObj})
+    }
+
+    function changeTodolistTitle(id: string, newTitle: string) {
+        const todolist = todolists.find(tl => tl.id === id)
+        if (todolist) {
+            todolist.title = newTitle
+            setTodolists([...todolists])
+        }
     }
 
     let todolistId1 = v1()
@@ -118,8 +138,11 @@ export function App() {
                         ChangeFilter={changeFilter}
                         addTask={addTask}
                         changeStatus={changeStatus}
+                        changeTaskTitle={changeTaskTitle}
                         filter={tl.filter}
                         removeTodolist={removeTodolist}
+                        changeTodolistTitle = {changeTodolistTitle}
+
                     />
 
                 })
