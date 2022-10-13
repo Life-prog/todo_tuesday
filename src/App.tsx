@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 export type FilterValueType = 'all' | 'completed' | 'active'
 
-type TodolistType = {
+export type TodolistType = {
     filter: FilterValueType
     id: string
     title: string
@@ -136,7 +136,7 @@ export function App() {
                 </Toolbar>
             </AppBar>
             <Container>
-                <Grid container style = {{padding: "20px"}}>
+                <Grid container style ={{padding: "20px"}}>
                     <AddItemForm addItem={addTodoList}/>
                 </Grid>
                 <Grid container spacing = {3}>

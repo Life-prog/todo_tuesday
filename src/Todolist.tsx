@@ -67,7 +67,7 @@ return <div>
             })
         }
     </div>
-    <div>
+    <div style ={{padding: "5px"}}>
         <Button variant={props.filter === "all" ?'outlined' : "text"} onClick={onAllClickHandler} color = {'success'}>All</Button>
         <Button variant={props.filter === "active" ?'outlined' : "text"}onClick={onActiveClickHandler}>Active</Button>
         <Button variant={props.filter === "completed" ?'outlined' : "text"}onClick={onCompletedClickHandler} color = {'secondary'}>Completed</Button>
